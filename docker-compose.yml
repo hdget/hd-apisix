@@ -24,7 +24,7 @@ services:
     volumes:
     - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
     ports:
-    - "127.0.0.1:9000:9000"
+    - "9000:9000"
     networks:
       apisix:
 
