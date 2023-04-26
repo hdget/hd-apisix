@@ -28,7 +28,7 @@ apisix:
 deployment:
   admin:
     allow_admin:               # https://nginx.org/en/docs/http/ngx_http_access_module.html#allow
-      - 127.0.0.1/24           # We need to restrict ip access rules for security
+      - 127.0.0.1              # We need to restrict ip access rules for security
 
     admin_listen:              # use a separate port
       ip: 127.0.0.1            # Specific IP, if not set, the default value is `0.0.0.0`.
