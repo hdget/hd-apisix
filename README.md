@@ -22,6 +22,7 @@ docker-compose -p apisix up -d
 Check that APISIX is running properly by running the following command on the host.
 
 ```
+docker exec -it <apisix_container_id> /bin/bash
 curl "http://127.0.0.1:9180/apisix/admin/services/" -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1'
 ```
 
@@ -51,10 +52,14 @@ docker exec -it apache-apisix apisix reload
 ```
 This will run the `apisix reload` command in your container.
 
-## Kubernetes Ingress
+## You can access the local port via ssh tunnel
 
-During the deployment process, in addition to the above operations, APISIX also derived the [`apisix-ingress-controller`](https://github.com/apache/apisix-ingress-controller), which can be deployed and used in the K8s environment more conveniently.
+1. create a dashboard ssh tunnel
+- Forward Port: 9000
+- Remote Server: 127.0.0.1:9000
+- SSH credential
 
-## License
-
-Licensed under the Apache License, Version 2.0: [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+2. create a grafana ssh tunnel
+- Forward Port: 3000
+- Remote Server: 127.0.0.1:3000
+- SSH credential
