@@ -17,7 +17,7 @@
 apisix:
   enable_control: true # Decoupled部署模式，两个apisix实例，使用mTLS协议通过9092端口通讯
   control:
-    ip: 127.0.0.1
+    ip: 0.0.0.0
     port: 9092
 
 deployment:
