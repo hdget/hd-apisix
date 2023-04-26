@@ -39,6 +39,7 @@ services:
     ports:
       - "9443:9443/tcp"
       - "9080:9080/tcp"
+      - "8899:9443/tcp"
     networks:
       apisix:
 
