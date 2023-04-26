@@ -24,12 +24,12 @@ services:
     volumes:
     - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
     ports:
-    - "9000:9000"
+    - "127.0.0.1:9000:9000"
     networks:
       apisix:
 
   apisix:
-    image: apache/apisix:${APISIX_IMAGE_TAG:-3.2.0-debian}
+    image: apache/apisix:${APISIX_IMAGE_TAG:-3.2.0-centos}
     restart: always
     volumes:
       - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
@@ -37,11 +37,8 @@ services:
       - etcd
     ##network_mode: host
     ports:
-      - "9180:9180/tcp"
-      - "9080:9080/tcp"
-      - "9091:9091/tcp"
-      - "9443:9443/tcp"
-      - "9092:9092/tcp"
+      - "9999:9999/tcp"
+      - "8899:8899/tcp"
     networks:
       apisix:
 
@@ -56,7 +53,7 @@ services:
       ETCD_ADVERTISE_CLIENT_URLS: "http://etcd:2379"
       ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379"
     ports:
-      - "2379:2379/tcp"
+      - "127.0.0.1:2379:2379/tcp"
     networks:
       apisix:
 
@@ -66,7 +63,7 @@ services:
     volumes:
       - ./prometheus_conf/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "127.0.0.1:9090:9090"
     networks:
       apisix:
 
