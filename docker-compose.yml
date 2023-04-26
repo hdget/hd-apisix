@@ -24,7 +24,7 @@ services:
     volumes:
     - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml
     ports:
-    - "9000:9000"
+    - "127.0.0.1:9000:9000"
     networks:
       apisix:
 
@@ -37,8 +37,8 @@ services:
       - etcd
     ##network_mode: host
     ports:
-      - "9999:9443/tcp"
-      - "8899:9443/tcp"
+      - "9443:9443/tcp"
+      - "9080:9080/tcp"
     networks:
       apisix:
 
@@ -71,7 +71,7 @@ services:
     image: grafana/grafana:9.4.7
     restart: always
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     volumes:
       - "./grafana_conf/provisioning:/etc/grafana/provisioning"
       - "./grafana_conf/dashboards:/var/lib/grafana/dashboards"
