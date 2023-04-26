@@ -37,8 +37,8 @@ services:
       - etcd
     ##network_mode: host
     ports:
-      - "9999:9999/tcp"
-      - "8899:8899/tcp"
+      - "9999:9443/tcp"
+      - "8899:9443/tcp"
     networks:
       apisix:
 
